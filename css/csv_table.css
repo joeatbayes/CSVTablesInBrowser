@@ -1,0 +1,58 @@
+<style>
+
+
+  tr:hover {
+     background-color: #D8FEFA
+  }
+
+
+  #tblx1 
+  {
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;    
+    border-collapse:collapse;   
+    overflow-y: auto;
+    border:1px solid #98bf21;
+    margin-right: 1em;    
+    margin-bottom: 5em;
+  }
+
+  #tblx1 tbody 
+  {   
+  }
+  
+  #tblx1 td  
+  {    
+    border:1px solid #688f01;
+    padding:1px 2px 1px 2px;
+    text-align:right;
+    white-space:nowrap;
+    text-wrap:none;
+  }
+  
+  #tblx1 th 
+  {
+   border:1px solid #688f01;
+   padding:1px 2px 1px 2px;  
+   text-align:right;
+   vertical-align: bottom;
+   padding-top:5px;
+   padding-bottom:4px;
+   background-color:#003030;
+   color:#ffffff;
+  }
+  
+  #tblx1 tr.alt td 
+  {
+    color:#000000;
+    background-color:#FFFEFF;    
+  }
+  
+  #tblx1 tr.tbl_grp td.tbl_grp {
+    background: #eBeAeA;
+    text-align: left;
+    border:1px none #FFFFFF;
+    font-size: 120%;
+    padding:1px 2px 1px 2px;
+  }
+                 
+</style>

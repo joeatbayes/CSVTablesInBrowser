@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    
+    <title>CSV Viewer</title>
+    <LINK href="css/style.css" rel="stylesheet" type="text/css">
+    <LINK href="css/csv_table.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="js/browser_util.js"></script>
+    <script type="text/javascript" src="js/simple_ajax.js"></script>    
+    <script type="text/javascript" src="js/simple_csv.js"></script>
+    <script type="text/javascript" src="js/dtable.js"></script>
+    <script type="text/javascript" src="js/dtable_csv.js"></script>
+    <script type="text/javascript" src="js/dtable_graph.js"></script>        
+    
+<style>
+ 
+                 
+</style>
+
+<script>          
+    function view_csv()
+    {
+        var tparms = parseQueryString(location.search);
+        var turi = tparms["uri"];
+        var outTitle = turi;
+        var ttitle = tparms["title"];
+        if (ttitle != undefined)
+        {
+            ttitle = unescape(ttitle);
+            outTitle = ttitle;
+        }
+
+        divp("status", "location.search=" + location.search);
+        if (turi == undefined)
+        {
+
+            divp("csv_table_div", "<h1>Must Supply uri= paramater that contains name "
+              + " of the CSV File you wish to display</h1>");
+        }
+        else
+        {
+            var tstr = "<h1><small>CSV View </small> " + outTitle + "</h1>";
+            document.title = outTitle;
+            set_div_contents("page_head", tstr);
+            set_div_contents("uri_str", "data source = <a href='" + turi + "'>" + turi + "</a>");
+            csv_default_run_non_bock(turi, tparms, "csv_table_div");
+        }
+    }
+    </script>
+
+</head>
+
+
+<body onload="view_csv();">
+   <div id="page_head"></div>
+
+   <div id="top_nav">
+     <a href="javascript:history.back()">back</a>
+   </div>
+
+   <div id="csv_table_div">
+
+   </div>
+
+   <hr />
+     
+   <div id="uri_str">  
+   </div>
+
+    <div id="mouse_pos">
+    </div>
+
+
+    <div id="ajax_message">
+    </div>
+
+    <div id="status">
+    </div>
+
+    <div id="key_cmd">
+    </div>
+
+</body>
+
+</html>

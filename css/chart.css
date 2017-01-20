@@ -1,0 +1,233 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+#graphBig {
+    border: 0px solid #9c9898;
+    background-color: #FEFEFF;
+    margin-left: 7px;
+
+}
+
+
+#canvas_div {
+    width:98%;
+    height:400px;
+    margin-bottom:5px;
+    margin-top: 0px;
+    border-top-width: 0px;
+    background-color: #FDFDFD;
+}
+
+#top_bar {
+    width: 98%;
+    height: 20px;
+}
+
+
+
+#day_range_select {
+    font-size:70%;
+    float:left;
+}
+
+#day_range_set {
+    font-size:70%;
+    float:left;
+}
+
+#zoom_select {
+    font-size:70%;
+    float:left;
+    margin-left:30px;
+}
+
+#zoom_set {
+    font-size:70%;
+    float:left;
+    margin-left:2em;
+}
+
+span.select {
+    text-decoration: underline;
+    margin-left:0.2em;
+}
+span.select:hover {
+    background-color: #FEE;
+}
+
+#stock_list_parent {
+  width: 9em;
+  float: left;
+}
+
+#stock_list {
+    width: 100%;
+    height: 18em;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+
+span.sselect {
+    text-decoration: underline;
+    margin-left:0.3em;
+    width: 3.5em;
+    float: left;
+}
+span.sselect:hover {
+    background-color: #FEE;
+}
+
+#active_symbol_info {
+    float: right;
+    font-size: 90%;
+    font-weight: bold;
+    margin-right: 0.6em;
+}
+
+#mouse_posit_stock_div {
+  width: 95%;
+  font-size: 70%;
+  color: #46d71c;
+  color: black;
+  background: #FAFAFB;
+  border-top-width: 1px;
+  border-top-color: #696969;
+  padding-left: 3em;
+}
+
+#symbol_desc {
+    float: right;
+    font-size: 70%;
+    font-weight: normal;
+    margin-right: 2em;
+}
+
+
+#symbol_profile {
+  float : right;
+  width: 20%;
+  height: 20em;
+  border: 1px solid;
+  border-radius:5px;
+  margin-right: 2em;
+  padding: 3px;
+}
+
+
+#symbol_summary {
+ float : left;
+ width:  2%;
+ height: 20em;
+ border: 1px solid;
+ border-radius:5px;
+ margin-left: 0.9em;
+ margin-right: 0.9em;
+ padding: 3px;
+}
+
+#vsc {
+  width: 199px;
+  float:left;
+}
+
+#view_summary {
+  float: left;
+  width: 190px;
+  height: 7em;
+  border: 1px solid;
+  border-radius: 5px;
+  margin-right: 0.5em;
+  margin-bottom: 0.2em;
+  font-size: 85%;
+  padding: 3px;
+}
+
+#symbol_performance {
+ float: left;
+ width: 190px;
+ height: 16em;
+ border: 1px solid;
+ border-radius:5px;
+ margin-right: 0.5em;
+ margin-top: 0.05em;
+ padding: 0.1em;
+ font-size: 80%;
+ overflow-y: grow;
+}
+
+#vectors_area {
+    float: left;
+    width: 26%;
+    padding: 0.1em;
+    border: 1px solid;
+    border-radius: 5px;
+    height: 20em;
+}
+#vector_nav {
+  width:98%;
+  height: 3em;
+}
+
+#vectors_info {
+  width:98%;
+  overflow-y:auto;
+  overflow-x:hidden;  
+  height: 17em;
+}
+
+div.vect_detail {
+  background-color: #FAFAF1;
+  padding-bottom: 0.6em;
+}
+
+div.vect_detail:hover {
+  background-color: #F1F1A1;
+}
+
+#symbol_perf_table {
+  width: 98%;
+  border-style: none;
+  border-collapse: collapse;
+  text-align: right;
+  padding:1px;
+  align: center;
+}
+
+#symbol_perf_table td {
+    border-collapse: collapse;
+    border-style: none;
+    padding: 0px;
+}
+
+span.symbol_change_pos {
+  font-size: 120%;
+  font-weight: bold;
+  color: green;
+}
+
+span.symbol_change_neg {
+    font-size: 120%;
+    font-weight: bold;
+    color: red;
+}
+
+
+#barL3 {
+  width: 98%;
+  float: left;
+  margin-top:2em;
+}
+
+#mouse_pos {
+    width: 80px;
+    font-family: monospace;
+    font-size: 6pt;
+}
+
+#key_cmd {
+    width: 180px;
+    font-family: monospace;
+    font-size: 8pt;
+}

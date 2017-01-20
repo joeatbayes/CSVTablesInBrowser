@@ -1,0 +1,191 @@
+
+// Beginning point of a stock vector.  originally
+// was only going to save the NDX but then realized
+// that if we use Ajax to load more data to allow
+// lager graph that we will need to know the DateTime
+// stamp to find the new index of bar.   As such
+// the bar should be computed cache value and will
+// need a way to invalidate the bar pointer when new
+// bars are added to the view.
+function Stock_point(ndx, aBar)
+{
+  this.ndx = ndx;
+  this.bar = aBar;
+  return this;
+}
+
+function is_stock_vector_complete(tVector)
+{
+  if (tVector === undefined) return false
+  if (tVector.beg === undefined) return false;
+  if (tVector.end === undefined) return false;
+  return true;
+}
+
+
+// Describes two points of stock where one is a beginning
+// point and the other is the ending point.   Designed as a
+// structure we can use to store a series of vectors where the
+// user has clicked to describe the a interesting stock move.
+function Stock_vector(beg_ndx, end_ndx, sView)
+{
+  var beg_bar = sView.get(beg_ndx);
+  this.beg = new Stock_point(beg_ndx, beg_bar);
+  if ((end_ndx !== undefined) && (end_ndx !== null))
+  {
+    var end_bar = sView.get(end_ndx);
+    this.end = new Stock_point(end_ndx, end_bar);
+  }
+  else
+    this.end = undefined;
+  return this;
+}
+
+
+Stock_vector.prototype.num_data_points = function()
+{
+   return Math.abs(this.beg.ndx - this.end.ndx);
+}
+
+
+Stock_vector.prototype.delta = function()
+{
+  return this.beg.bar.close - this.end.bar.close;
+}
+
+Stock_vector.prototype.percent_change = function()
+{
+  return ((this.delta() / this.end.bar.close)*100);
+}
+
+
+Stock_vector.prototype.order_by_calendar = function()
+{
+}
+
+
+Stock_vector.prototype.find_lowest_close_by = function()
+{
+}
+
+Stock_vector.prototype.find_highest_close_by = function()
+{
+}
+
+
+function stock_vector_compare(p1, p2)
+{
+  p1Max = max(p1.beg.dateTime, p1.end.DateTime);
+  p2Max = max(p2.beg.dateTime, p2.end.DateTime);
+  if (p1Max < p2Max) return -1;
+  if (p1Max == p2Max) return 0;
+  return 1;
+}
+
+
+
+// Stock Vectors an array of vectors normally
+// used to track the set of vectors defined
+// for a given stock.   Also provides functionality
+// to save the array to string and parse from
+// string.
+
+function Stock_vectors()
+{
+  this.rows = [];
+  return this;
+}
+
+
+Stock_vectors.__defineGetter__("length", function()
+{
+  return this.rows.length;
+});
+
+
+Stock_vectors.prototype.push = function(pVar)
+{
+  this.rows.push(pVar);
+}
+
+
+Stock_vectors.prototype.sort_by_order = function()
+{
+  return this.rows.sort(stock_vector_compare);
+}
+
+
+Stock_vectors.prototype.to_save_str = function()
+{
+  var rows = this.rows;
+  sb = new String_builder();
+  for (var ndx in rows)
+  {
+    var cdv = rows[ndx];
+    var tstr = cdv.beg.bar.dateTime + "," + cdv.end.bar.dateTime;
+    sb.push(tstr).nl();
+  }
+  return sb.to_str();
+}
+
+
+// Parse a string which contains a series of begin and end
+// timestamps delimited by \n and create a vector array
+// containing the vectors which match the associated positions
+// in the view.
+Stock_vectors.prototype.from_save_str = function(sView, aStr)
+{
+  var rowsArr = aStr.split("\n");
+  for (var ndx in rowsArr)
+  {
+    var rowStr = rowsArr[ndx];
+    var tarr = rowStr.split(",");
+    if (tarr.length == 2)
+    {
+      var begStr = tarr[0];
+      var endStr = tarr[1];
+      var begNdx = sView.find_date_time(begStr);
+      var endNdx = sView.find_date_time(endStr);
+      if ((begNdx !== undefined) && (endNdx !== undefined))
+      {
+        var tVect = new Stock_vector(begNdx, endNdx, sView);
+        this.push(tVect);
+      }
+    }
+  }
+}
+
+
+Stock_vectors.prototype.load_local = function(pSymbol)
+{
+
+}
+
+Stock_vectors.prototype.save_local = function(pSymbol)
+{
+
+}
+
+
+Stock_vectors.prototype.load_server = function(pSymbol)
+{
+
+}
+
+
+Stock_vectors.prototype.save_server = function(pSymbol)
+{
+
+}
+
+
+Stock_vectors.prototype.sort_by_date = function()
+{
+}
+
+Stock_vectors.prototype.remove_last = function()
+{
+   if (this.rows.length > 0)
+     this.rows.pop();
+}
+
